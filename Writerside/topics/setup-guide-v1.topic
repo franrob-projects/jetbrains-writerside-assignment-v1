@@ -23,7 +23,7 @@
     </chapter>
 
     <chapter title="Install the Writerside plugin" id="install-plugin">
-        <procedure>
+        <procedure id="install-plugin-steps">
             <step>Open IntelliJ IDEA.</step>
             <step>Go to <ui-path>Settings | Plugins | Marketplace</ui-path>.</step>
             <step>Search for <control>Writerside</control>.</step>
@@ -32,7 +32,7 @@
     </chapter>
 
     <chapter title="Create a new project" id="create-project">
-        <procedure>
+        <procedure id="create-project-steps">
             <step>From the IntelliJ welcome screen, click <control>New Project</control>.</step>
             <step>In the project type list, select <control>Writerside</control>.</step>
             <step>Choose the <control>Writerside Starter</control> template.</step>
@@ -47,9 +47,9 @@
     </chapter>
 
     <chapter title="Add a new topic" id="add-topic">
-        <procedure>
+        <procedure id="add-topic-steps">
             <step>
-                In the <control>Table of Contents</control> panel, right-click
+                In the table of contents, right-click
                 the existing topic and choose
                 <ui-path>New Topic | Empty XML Topic</ui-path>.
             </step>
@@ -65,7 +65,7 @@
     </chapter>
 
     <chapter title="Build locally" id="local-build">
-        <procedure>
+        <procedure id="local-build-steps">
             <step>
                 In the Writerside tool window, select the <code>Help Instance</code>
                 and choose <ui-path>Export To | Web Archive</ui-path>.
@@ -76,8 +76,55 @@
         </procedure>
     </chapter>
 
+    <chapter title="Fix warnings and errors" id="fix-warnings">
+        <p>
+            Writerside flags two common categories of problems in <code>.topic</code> files:
+            grammar warnings from the built-in style checker, and validation errors from the
+            XML schema. Address these before committing so the build stays clean.
+        </p>
+
+        <chapter title="Fix missing id attributes" id="fix-missing-ids">
+            <p>
+                Every <code>&lt;procedure&gt;</code> element requires a unique <code>id</code>
+                attribute. Omitting it produces a validation error: <emphasis>The 'id' attribute
+                is missing or empty</emphasis>.
+            </p>
+            <p>Add an <code>id</code> that matches the chapter it belongs to:</p>
+            <code-block lang="xml">
+&lt;procedure id="install-plugin-steps"&gt;
+    ...
+&lt;/procedure&gt;
+            </code-block>
+            <p>Use a consistent naming pattern such as <code>&lt;chapter-id&gt;-steps</code>
+            so IDs remain predictable across the file.</p>
+        </chapter>
+
+        <chapter title="Fix grammar warnings" id="fix-grammar">
+            <p>The style checker flags two patterns frequently:</p>
+            <list>
+                <li>
+                    <p><emphasis>Passive voice</emphasis> — rewrite with an active verb.
+                    For example, replace <emphasis>source files are visible</emphasis> with
+                    <emphasis>source files appear</emphasis>.</p>
+                </li>
+                <li>
+                    <p><emphasis>Verb agreement false positives</emphasis> — these occur when
+                    a plural noun (such as <emphasis>Contents</emphasis> in
+                    <emphasis>Table of Contents panel</emphasis>) is misread as the subject of
+                    the following verb. Rephrase to remove the ambiguity: use
+                    <emphasis>in the table of contents</emphasis> instead of
+                    <emphasis>in the Table of Contents panel</emphasis>.</p>
+                </li>
+            </list>
+            <note>
+                The checker notes that collective nouns can be either singular or plural, so
+                not every flagged instance is a true error. Read the suggestion before accepting it.
+            </note>
+        </chapter>
+    </chapter>
+
     <chapter title="Push to GitHub" id="push-to-github">
-        <procedure>
+        <procedure id="push-to-github-steps">
             <step>Create a new public repository on GitHub.</step>
             <step>Open a terminal at the project root and run:
                 <code-block lang="shell">
