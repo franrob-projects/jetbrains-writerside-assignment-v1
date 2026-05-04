@@ -67,10 +67,11 @@
     <chapter title="Build locally" id="local-build">
         <procedure>
             <step>
-                Open the build menu and choose
-                <ui-path>Build | Build Help Instance</ui-path>.
+                In the Writerside tool window, select the <code>Help Instance</code>
+                and choose <ui-path>Export To | Web Archive</ui-path>.
             </step>
-            <step>Wait for the build to complete. Errors and warnings appear in the build output panel.</step>
+            <step>Click <control>Run</control> in the generated configuration.</step>
+            <step>Inspect the build output in the Run tool window for errors and warnings.</step>
             <step>Use the <control>Writerside Preview</control> pane on the right to verify rendering as you write.</step>
         </procedure>
     </chapter>
@@ -78,7 +79,7 @@
     <chapter title="Push to GitHub" id="push-to-github">
         <procedure>
             <step>Create a new public repository on GitHub.</step>
-            <step>In a terminal, from the project root, run:
+            <step>Open a terminal at the project root and run:
                 <code-block lang="shell">
 git init
 git add .
@@ -88,7 +89,7 @@ git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
 git push -u origin main
                 </code-block>
             </step>
-            <step>Confirm the source files are visible on GitHub.</step>
+            <step>Verify that the source files appear on GitHub.</step>
         </procedure>
     </chapter>
 
