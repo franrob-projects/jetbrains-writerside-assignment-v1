@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Set up a Writerside documentation project"
+       id="setup-guide-v1">
+
+    <p>
+        This guide walks through creating a new Writerside documentation
+        project from scratch in IntelliJ IDEA, adding a topic, building it
+        locally, and pushing the source to GitHub. It is written for new
+        technical writers joining a team that uses Writerside.
+    </p>
+
+    <chapter title="Before you start" id="prerequisites">
+        <p>You will need:</p>
+        <list>
+            <li>IntelliJ IDEA (Community or Ultimate)</li>
+            <li>A GitHub account</li>
+            <li>Git installed locally</li>
+        </list>
+    </chapter>
+
+    <chapter title="Install the Writerside plugin" id="install-plugin">
+        <procedure>
+            <step>Open IntelliJ IDEA.</step>
+            <step>Go to <ui-path>Settings | Plugins | Marketplace</ui-path>.</step>
+            <step>Search for <control>Writerside</control>.</step>
+            <step>Click <control>Install</control>, then restart IntelliJ when prompted.</step>
+        </procedure>
+    </chapter>
+
+    <chapter title="Create a new project" id="create-project">
+        <procedure>
+            <step>From the IntelliJ welcome screen, click <control>New Project</control>.</step>
+            <step>In the project type list, select <control>Writerside</control>.</step>
+            <step>Choose the <control>Writerside Starter</control> template.</step>
+            <step>Set a project name and location, then click <control>Create</control>.</step>
+        </procedure>
+        <p>
+            Writerside generates a starter project containing one instance
+            (<code>Help Instance</code>, ID <code>hi</code>), a tree file
+            (<code>hi.tree</code>) that controls the table of contents, and a
+            single starter topic.
+        </p>
+    </chapter>
+
+    <chapter title="Add a new topic" id="add-topic">
+        <procedure>
+            <step>
+                In the <control>Table of Contents</control> panel, right-click
+                the existing topic and choose
+                <ui-path>New Topic | Empty XML Topic</ui-path>.
+            </step>
+            <step>Name the file (for example, <code>setup-guide</code>).</step>
+            <step>Writerside creates the <code>.topic</code> file under <code>topics/</code> and registers it in <code>hi.tree</code> automatically.</step>
+            <step>Replace the placeholder content with your own, using semantic elements such as <code>&lt;procedure&gt;</code>, <code>&lt;step&gt;</code>, and <code>&lt;chapter&gt;</code>.</step>
+        </procedure>
+        <note>
+            Use <code>.topic</code> XML files for procedural or structured
+            content where semantic elements add value. Use <code>.md</code> for
+            simple prose where the lighter Markdown syntax is enough.
+        </note>
+    </chapter>
+
+    <chapter title="Build locally" id="local-build">
+        <procedure>
+            <step>
+                Open the build menu and choose
+                <ui-path>Build | Build Help Instance</ui-path>.
+            </step>
+            <step>Wait for the build to complete. Errors and warnings appear in the build output panel.</step>
+            <step>Use the <control>Writerside Preview</control> pane on the right to verify rendering as you write.</step>
+        </procedure>
+    </chapter>
+
+    <chapter title="Push to GitHub" id="push-to-github">
+        <procedure>
+            <step>Create a new public repository on GitHub.</step>
+            <step>In a terminal, from the project root, run:
+                <code-block lang="shell">
+git init
+git add .
+git commit -m "Initial Writerside project"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
+git push -u origin main
+                </code-block>
+            </step>
+            <step>Confirm the source files are visible on GitHub.</step>
+        </procedure>
+    </chapter>
+
+</topic>
