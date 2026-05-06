@@ -7,31 +7,91 @@
        id="setup-guide-v1">
 
     <p>
-        This guide walks through creating a new Writerside documentation
-        project from scratch in IntelliJ IDEA, adding a topic, building it
-        locally, and pushing the source to GitHub. It is written for new
-        technical writers joining a team that uses Writerside.
+        This guide walks you through creating a Writerside documentation
+        project in IntelliJ IDEA, adding your first topic, building it
+        locally, and pushing the source to GitHub. It is written for
+        technical writers who are new to Writerside but comfortable with a
+        code editor.
+    </p>
+    <p>
+        By the end you will have a working Writerside project under version
+        control, a single authored topic, and a local web archive build that
+        you can open in a browser.
     </p>
 
     <chapter title="Before you start" id="prerequisites">
-        <p>You will need:</p>
-        <list>
-            <li>IntelliJ IDEA (Community or Ultimate)</li>
-            <li>A GitHub account</li>
-            <li>Git installed locally</li>
-        </list>
+        <p>You will need the following installed and ready to use:</p>
+        <deflist>
+            <def title="IntelliJ IDEA (Community or Ultimate)">
+                Writerside runs as an IntelliJ plugin. Either edition works —
+                Community is free.
+            </def>
+            <def title="Git">
+                Used to version your sources and push them to GitHub. If you
+                are unsure whether Git is installed, run <code>git --version</code>
+                in a terminal.
+            </def>
+            <def title="A GitHub account">
+                You will push the project here so it can be reviewed,
+                collaborated on, and (later) published from.
+            </def>
+        </deflist>
+        <tip>
+            If this is your first time using Writerside, skim the key
+            concepts below before starting — the procedure makes more sense
+            once you know what an <emphasis>instance</emphasis> and a
+            <emphasis>tree file</emphasis> are.
+        </tip>
+    </chapter>
+
+    <chapter title="Key concepts" id="concepts">
+        <p>Three terms appear repeatedly in this guide:</p>
+        <deflist>
+            <def title="Instance" id="def-instance">
+                A documentation product. A single project can contain
+                multiple instances (for example, one per audience or
+                product), each producing its own help site. The starter
+                template provides one instance called <code>Help Instance</code>
+                with the ID <code>hi</code>.
+            </def>
+            <def title="Tree file" id="def-tree-file">
+                An XML file (such as <code>hi.tree</code>) that defines the
+                table of contents for an instance — which topics appear, in
+                what order, and how they nest.
+            </def>
+            <def title="Topic" id="def-topic">
+                A single page of content. Writerside supports two formats:
+                <code>.topic</code> (semantic XML, best for procedures and
+                structured content) and <code>.md</code> (Markdown, best for
+                lighter prose).
+            </def>
+        </deflist>
     </chapter>
 
     <chapter title="Install the Writerside plugin" id="install-plugin">
+        <p>
+            The plugin adds Writerside project templates, the topic editor,
+            the live preview pane, and the build runner to IntelliJ.
+        </p>
         <procedure id="install-plugin-steps">
             <step>Open IntelliJ IDEA.</step>
             <step>Go to <ui-path>Settings | Plugins | Marketplace</ui-path>.</step>
             <step>Search for <control>Writerside</control>.</step>
-            <step>Click <control>Install</control>, then restart IntelliJ when prompted.</step>
+            <step>
+                Click <control>Install</control>, then restart IntelliJ when
+                prompted. The restart is required so IntelliJ can register
+                the new project type and file templates.
+            </step>
         </procedure>
     </chapter>
 
     <chapter title="Create a new project" id="create-project">
+        <p>
+            Starting from the Writerside template (rather than an empty
+            project) gives you a working instance, tree file, and starter
+            topic on day one — useful as a reference while you author your
+            own content.
+        </p>
         <procedure id="create-project-steps">
             <step>From the IntelliJ welcome screen, click <control>New Project</control>.</step>
             <step>In the project type list, select <control>Writerside</control>.</step>
@@ -39,94 +99,157 @@
             <step>Set a project name and location, then click <control>Create</control>.</step>
         </procedure>
         <p>
-            Writerside generates a starter project containing one instance
-            (<code>Help Instance</code>, ID <code>hi</code>), a tree file
-            (<code>hi.tree</code>) that controls the table of contents, and a
-            single starter topic.
+            Writerside generates a project containing one instance
+            (<code>Help Instance</code>, ID <code>hi</code>), the
+            corresponding tree file (<code>hi.tree</code>), and a single
+            starter topic under <code>topics/</code>.
         </p>
     </chapter>
 
     <chapter title="Add a new topic" id="add-topic">
+        <p>
+            Adding topics through the IDE (rather than creating files
+            manually) means Writerside registers them in the tree file for
+            you, so they appear in the table of contents automatically.
+        </p>
         <procedure id="add-topic-steps">
             <step>
-                In the table of contents, right-click
-                the existing topic and choose
-                <ui-path>New Topic | Empty XML Topic</ui-path>.
+                In the table of contents, right-click the existing topic and
+                choose <ui-path>New Topic | Empty XML Topic</ui-path>.
             </step>
             <step>Name the file (for example, <code>setup-guide</code>).</step>
-            <step>Writerside creates the <code>.topic</code> file under <code>topics/</code> and registers it in <code>hi.tree</code> automatically.</step>
-            <step>Replace the placeholder content with your own, using semantic elements such as <code>&lt;procedure&gt;</code>, <code>&lt;step&gt;</code>, and <code>&lt;chapter&gt;</code>.</step>
+            <step>
+                Writerside creates the <code>.topic</code> file under
+                <code>topics/</code> and registers it in <code>hi.tree</code>
+                automatically — no manual edits needed.
+            </step>
+            <step>
+                Replace the placeholder content with your own, using
+                semantic elements such as <code>&lt;procedure&gt;</code>,
+                <code>&lt;step&gt;</code>, and <code>&lt;chapter&gt;</code>.
+                Semantic elements give the build richer formatting and
+                better cross-referencing than plain prose.
+            </step>
         </procedure>
         <note>
-            Use <code>.topic</code> XML files for procedural or structured
-            content where semantic elements add value. Use <code>.md</code> for
-            simple prose where the lighter Markdown syntax is enough.
+            Choose <code>.topic</code> for procedural or structured content
+            where semantic elements add value. Choose <code>.md</code> when
+            simple Markdown is enough — release notes, short explainers, and
+            similar prose.
         </note>
     </chapter>
 
-    <chapter title="Build locally" id="local-build">
+    <chapter title="Build and preview locally" id="local-build">
+        <p>
+            Building locally lets you confirm that your sources compile,
+            cross-references resolve, and pages render the way you expect
+            before sharing them. Two complementary tools cover this:
+            <emphasis>Preview</emphasis> for live feedback while writing,
+            and <emphasis>Export to Web Archive</emphasis> for a full build
+            you can open in a browser.
+        </p>
         <procedure id="local-build-steps">
             <step>
-                In the Writerside tool window, select the <code>Help Instance</code>
-                and choose <ui-path>Export To | Web Archive</ui-path>.
+                Open the <control>Writerside Preview</control> pane on the
+                right to see how the current topic renders as you edit. This
+                is the fastest feedback loop while authoring.
             </step>
-            <step>Click <control>Run</control> in the generated configuration.</step>
-            <step>Inspect the build output in the Run tool window for errors and warnings.</step>
-            <step>Use the <control>Writerside Preview</control> pane on the right to verify rendering as you write.</step>
+            <step>
+                For a full build, in the Writerside tool window select the
+                <code>Help Instance</code> and choose
+                <ui-path>Export To | Web Archive</ui-path>.
+            </step>
+            <step>Click <control>Run</control> in the generated run configuration.</step>
+            <step>
+                Inspect the build output in the Run tool window. Errors stop
+                the build; warnings do not, but you should still resolve
+                them — see <a href="#fix-warnings">Fix warnings and errors</a>.
+            </step>
+            <step>
+                When the build succeeds, open the generated
+                <code>.zip</code> archive (for example,
+                <code>webHelpHI2-all.zip</code>) and load
+                <code>index.html</code> in a browser to verify the final
+                output.
+            </step>
         </procedure>
     </chapter>
 
     <chapter title="Fix warnings and errors" id="fix-warnings">
         <p>
-            Writerside flags two common categories of problems in <code>.topic</code> files:
-            grammar warnings from the built-in style checker, and validation errors from the
-            XML schema. Address these before committing so the build stays clean.
+            Writerside surfaces two kinds of problems in <code>.topic</code>
+            files: <emphasis>validation errors</emphasis> from the XML
+            schema, which break the build, and <emphasis>style warnings</emphasis>
+            from the built-in grammar checker, which do not. Resolving both
+            keeps reviews short and the build output clean.
         </p>
 
         <chapter title="Fix missing id attributes" id="fix-missing-ids">
             <p>
-                Every <code>&lt;procedure&gt;</code> element requires a unique <code>id</code>
-                attribute. Omitting it produces a validation error: <emphasis>The 'id' attribute
-                is missing or empty</emphasis>.
+                Every <code>&lt;procedure&gt;</code> requires a unique
+                <code>id</code> attribute so Writerside can link to it
+                directly (for example, from a search result or a deep link).
+                Omitting the attribute produces this validation error:
             </p>
-            <p>Add an <code>id</code> that matches the chapter it belongs to:</p>
+            <p><emphasis>The 'id' attribute is missing or empty</emphasis>.</p>
+            <p>Add an <code>id</code> derived from the surrounding chapter:</p>
             <code-block lang="xml">
 &lt;procedure id="install-plugin-steps"&gt;
     ...
 &lt;/procedure&gt;
             </code-block>
-            <p>Use a consistent naming pattern such as <code>&lt;chapter-id&gt;-steps</code>
-            so IDs remain predictable across the file.</p>
+            <tip>
+                A consistent pattern such as <code>&lt;chapter-id&gt;-steps</code>
+                makes IDs predictable across a project, which helps when you
+                need to update or link to them later.
+            </tip>
         </chapter>
 
         <chapter title="Fix grammar warnings" id="fix-grammar">
-            <p>The style checker flags two patterns frequently:</p>
-            <list>
-                <li>
-                    <p><emphasis>Passive voice</emphasis> — rewrite with an active verb.
-                    For example, replace <emphasis>source files are visible</emphasis> with
-                    <emphasis>source files appear</emphasis>.</p>
-                </li>
-                <li>
-                    <p><emphasis>Verb agreement false positives</emphasis> — these occur when
-                    a plural noun (such as <emphasis>Contents</emphasis> in
-                    <emphasis>Table of Contents panel</emphasis>) is misread as the subject of
-                    the following verb. Rephrase to remove the ambiguity: use
-                    <emphasis>in the table of contents</emphasis> instead of
-                    <emphasis>in the Table of Contents panel</emphasis>.</p>
-                </li>
-            </list>
+            <p>The grammar checker most commonly flags two patterns:</p>
+            <deflist>
+                <def title="Passive voice">
+                    Rewrite with an active verb so the subject performs the
+                    action. For example, change <emphasis>the source files
+                    are visible on GitHub</emphasis> to <emphasis>the source
+                    files appear on GitHub</emphasis>. Active voice is
+                    shorter and easier for readers whose first language
+                    isn't English.
+                </def>
+                <def title="Subject–verb agreement false positives">
+                    These occur when a plural noun inside a phrase (for
+                    example, <emphasis>Contents</emphasis> in
+                    <emphasis>Table of Contents panel</emphasis>) is misread
+                    as the subject of the next verb. Rephrasing usually
+                    resolves it: use <emphasis>in the table of contents</emphasis>
+                    instead of <emphasis>in the Table of Contents panel</emphasis>.
+                </def>
+            </deflist>
             <note>
-                The checker notes that collective nouns can be either singular or plural, so
-                not every flagged instance is a true error. Read the suggestion before accepting it.
+                The checker itself acknowledges that collective nouns can be
+                singular or plural, so not every warning is a true error.
+                Read the suggestion in context before accepting it.
             </note>
         </chapter>
     </chapter>
 
     <chapter title="Push to GitHub" id="push-to-github">
+        <p>
+            Pushing to GitHub puts your sources under version control, makes
+            them available to reviewers, and is the precondition for later
+            publishing the help site (for example, via GitHub Pages or a CI
+            pipeline that triggers on push).
+        </p>
         <procedure id="push-to-github-steps">
-            <step>Create a new public repository on GitHub.</step>
-            <step>Open a terminal at the project root and run:
+            <step>
+                Create a new repository on GitHub. A public repository is
+                fine for this guide; choose private if your team requires
+                it.
+            </step>
+            <step>
+                Open a terminal at the project root and run the following
+                commands. Replace <code>YOUR-USERNAME</code> and
+                <code>YOUR-REPO</code> with your own values.
                 <code-block lang="shell">
 git init
 git add .
@@ -136,8 +259,24 @@ git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
 git push -u origin main
                 </code-block>
             </step>
-            <step>Verify that the source files appear on GitHub.</step>
+            <step>
+                Refresh the repository page on GitHub and verify that the
+                source files appear. The presence of <code>Writerside/</code>
+                and <code>hi.tree</code> confirms the push worked.
+            </step>
         </procedure>
+        <warning>
+            Avoid committing build artifacts such as
+            <code>webHelpHI2-all.zip</code>. Add them to <code>.gitignore</code>
+            so the repository stays focused on sources.
+        </warning>
     </chapter>
+
+    <seealso>
+        <category ref="related">
+            <a href="https://www.jetbrains.com/help/writerside/discover-writerside.html">JetBrains Writerside documentation</a>
+            <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">Create a repository on GitHub</a>
+        </category>
+    </seealso>
 
 </topic>
