@@ -22,16 +22,16 @@
     <chapter title="Before you start" id="prerequisites">
         <p>You will need the following installed and ready to use:</p>
         <deflist>
-            <def title="IntelliJ IDEA (Community or Ultimate)">
+            <def title="IntelliJ IDEA (Community or Ultimate)" id="def-intellij">
                 Writerside runs as an IntelliJ plugin. Either edition works —
                 Community is free.
             </def>
-            <def title="Git">
+            <def title="Git" id="def-git">
                 Used to version your sources and push them to GitHub. If you
                 are unsure whether Git is installed, run <code>git --version</code>
                 in a terminal.
             </def>
-            <def title="A GitHub account">
+            <def title="A GitHub account" id="def-github-account">
                 You will push the project here so it can be reviewed,
                 collaborated on, and (later) published from.
             </def>
@@ -208,21 +208,20 @@
         <chapter title="Fix grammar warnings" id="fix-grammar">
             <p>The grammar checker most commonly flags two patterns:</p>
             <deflist>
-                <def title="Passive voice">
+                <def title="Passive voice" id="def-passive-voice">
                     Rewrite with an active verb so the subject performs the
-                    action. For example, change <emphasis>the source files
-                    are visible on GitHub</emphasis> to <emphasis>the source
-                    files appear on GitHub</emphasis>. Active voice is
+                    action. For example, change <code>the source files are visible on GitHub</code>
+                    to <code>the source files appear on GitHub</code>. Active voice is
                     shorter and easier for readers whose first language
                     isn't English.
                 </def>
-                <def title="Subject–verb agreement false positives">
+                <def title="Subject–verb agreement false positives" id="def-subject-verb">
                     These occur when a plural noun inside a phrase (for
-                    example, <emphasis>Contents</emphasis> in
-                    <emphasis>Table of Contents panel</emphasis>) is misread
+                    example, <code>Contents</code> in
+                    <code>Table of Contents panel</code>) is misread
                     as the subject of the next verb. Rephrasing usually
-                    resolves it: use <emphasis>in the table of contents</emphasis>
-                    instead of <emphasis>in the Table of Contents panel</emphasis>.
+                    resolves it: use <code>in the table of contents</code>
+                    instead of <code>in the Table of Contents panel</code>.
                 </def>
             </deflist>
             <note>
