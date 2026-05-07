@@ -10,4 +10,4 @@ Open the project in IntelliJ IDEA with the Writerside plugin installed, then run
 
 ## Author
 
-Fran Roberts
+Fran
