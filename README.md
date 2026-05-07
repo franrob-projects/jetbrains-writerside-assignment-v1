@@ -7,7 +7,3 @@ This contains a single setup guide (`Writerside/topics/setup-guide-v1.topic`) th
 ## Build locally
 
 Open the project in IntelliJ IDEA with the Writerside plugin installed, then run the **Web Archive (hi)** configuration. The build outputs `webHelpHI2-all.zip` at the project root - - open `index.html` inside it to view the rendered docs.
-
-## Author
-
-Fran
